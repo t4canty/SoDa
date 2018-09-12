@@ -27,7 +27,7 @@ public class GameLoop extends Canvas implements Runnable
         handler = new Handler();
         WIDTH = getWidth();
         HEIGHT = getHeight();
-        handler.createWorld();
+
 
         this.addKeyListener(new KeyInput(handler));
     }
@@ -84,7 +84,8 @@ public class GameLoop extends Canvas implements Runnable
 
         g.setColor(Color.blue);
         g.fillRect(0, 0, getWidth(), getHeight());
-
+        g.setColor(Color.black);
+        g.drawString("hello world", this.getWidth() / 2, this.getHeight() / 2);
 
         handler.render(g);
         ////////////////////////////////////
@@ -94,7 +95,7 @@ public class GameLoop extends Canvas implements Runnable
 
     public static void main(String[] args)
     {
-        Window window = new Window (500, 800, "Soda Test", new GameLoop());
-    }
+        Window window = new Window(500, 800, "Soda Test", new GameLoop());
 
+    }
 }

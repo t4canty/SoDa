@@ -1,7 +1,10 @@
 
 public enum ObjectID
 {
-    Player(),
-    Block(),
-    Daniel();
+    Car1(),
+    Car2(),
+    Bullet(),
+    ApacheAttackHelicopter(),
+    Wall();
+
 }

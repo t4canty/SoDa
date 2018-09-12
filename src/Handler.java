@@ -32,11 +32,5 @@ public class Handler
         objects.remove(object);
     }
 
-    public void createWorld()
-    {
-
-    }
-
-
 }
 
