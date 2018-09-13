@@ -3,18 +3,15 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 
-public class GameLoop extends Canvas implements Runnable
-{
+public class GameLoop extends Canvas implements Runnable {
     private boolean running = false;
     private Thread thread;
     private Handler handler;
     public static int WIDTH, HEIGHT;
 
 
-
-    public synchronized void start()
-    {
-        if(running)
+    public synchronized void start() {
+        if (running)
             return;
 
         running = true;
@@ -22,19 +19,18 @@ public class GameLoop extends Canvas implements Runnable
         thread.start();
     }
 
-    private void init()
-    {
+    private void init() {
         handler = new Handler();
         WIDTH = getWidth();
         HEIGHT = getHeight();
 
-
         this.addKeyListener(new KeyInput(handler));
+
+        handler.addObject(new Assaf(250,20, ObjectID.ApacheAttackHelicopter));
     }
 
     @Override
-    public void run()
-    {
+    public void run() {
         init();
         long lastTime = System.nanoTime();
         double amountOfTicks = 60.0;
@@ -43,11 +39,11 @@ public class GameLoop extends Canvas implements Runnable
         long timer = System.currentTimeMillis();
         int updates = 0;
         int frames = 0;
-        while(running){
+        while (running) {
             long now = System.nanoTime();
             delta += (now - lastTime) / ns;
             lastTime = now;
-            while(delta >= 1){
+            while (delta >= 1) {
                 tick();
                 updates++;
                 delta--;
@@ -55,7 +51,7 @@ public class GameLoop extends Canvas implements Runnable
             render();
             frames++;
 
-            if(System.currentTimeMillis() - timer > 1000){
+            if (System.currentTimeMillis() - timer > 1000) {
                 timer += 1000;
                 System.out.println("FPS: " + frames + " TICKS: " + updates);
                 frames = 0;
@@ -64,17 +60,14 @@ public class GameLoop extends Canvas implements Runnable
         }
     }
 
-    private void tick()
-    {
+    private void tick() {
         handler.tick();
     }
 
-    private void render()
-    {
+    private void render() {
 
         BufferStrategy bs = this.getBufferStrategy();
-        if (bs == null)
-        {
+        if (bs == null) {
             this.createBufferStrategy(3);
             return;
         }
@@ -93,8 +86,7 @@ public class GameLoop extends Canvas implements Runnable
         bs.show();
     }
 
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
         Window window = new Window(500, 800, "Soda Test", new GameLoop());
 
     }
