@@ -1,10 +1,15 @@
 import java.awt.Graphics;
 import java.awt.Rectangle;
-import java.util.LinkedList;
+import java.util.ArrayList;
 
 public abstract class GameObject {
     protected float x, y;
     protected float velX = 0, velY = 0;
+    protected boolean leftPressed = false;
+    protected boolean rightPressed = false;
+    protected boolean upPressed = false;
+    protected boolean downPressed = false;
+
     protected ObjectID id;
 
 
@@ -14,7 +19,7 @@ public abstract class GameObject {
         this.id = id;
     }
 
-    public abstract void tick(LinkedList<GameObject> objects);
+    public abstract void tick(ArrayList<GameObject> objects);
 
     public abstract void render(Graphics g);
 
@@ -22,6 +27,25 @@ public abstract class GameObject {
 
     public float getX() {
         return x;
+    }
+
+
+    public void setRightPressed(boolean rightPressed) {
+        this.rightPressed = rightPressed;
+    }
+
+
+    public void setUpPressed(boolean upPressed) {
+        this.upPressed = upPressed;
+    }
+
+
+    public void setDownPressed(boolean downPressed) {
+        this.downPressed = downPressed;
+    }
+
+    public void setLeftPressed(boolean leftPressed) {
+        this.leftPressed = leftPressed;
     }
 
     public float getY() {

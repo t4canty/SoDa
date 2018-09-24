@@ -26,7 +26,7 @@ public class GameLoop extends Canvas implements Runnable {
 
         this.addKeyListener(new KeyInput(handler));
 
-        handler.addObject(new Assaf(250,20, ObjectID.ApacheAttackHelicopter));
+        handler.addObject(new Car(250,20, ObjectID.Car1));
     }
 
     @Override

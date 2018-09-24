@@ -1,34 +1,39 @@
 import java.awt.Graphics;
-import java.util.LinkedList;
+import java.util.ArrayList;
 
-public class Handler
-{
-    public LinkedList<GameObject> objects = new LinkedList<GameObject>();
+public class Handler {
+    public ArrayList<GameObject> objects = new ArrayList<GameObject>();
 
 
-    public void tick()
-    {
-        for (GameObject thisObject : objects)
-        {
+    public void tick() {
+        for (GameObject thisObject : objects) {
             thisObject.tick(objects);
         }
     }
 
-    public void render(Graphics g)
-    {
-        for (GameObject thisObject : objects)
-        {
+    public void render(Graphics g) {
+        for (GameObject thisObject : objects) {
             thisObject.render(g);
         }
     }
 
-    public void addObject(GameObject object)
-    {
+    public void addObject(GameObject object) {
         objects.add(object);
     }
 
-    public void removeObject(GameObject object)
-    {
+    public GameObject getObject(GameObject obj) {
+
+        for (int i = 0; i < objects.size(); i++) {
+            if (objects.get(i).equals(obj))
+            {
+                return objects.get(i);
+            }
+
+        }
+        return null;
+    }
+
+    public void removeObject(GameObject object) {
         objects.remove(object);
     }
 
