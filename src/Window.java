@@ -1,10 +1,8 @@
 import java.awt.Dimension;
 import javax.swing.JFrame;
 
-public class Window
-{
-    public Window(int h, int w, String title, GameLoop game)
-    {
+public class Window {
+    public Window(int h, int w, String title, GameLoop game) {
         game.setPreferredSize(new Dimension(w, h));
         game.setMinimumSize(new Dimension(w, h));
         game.setMaximumSize(new Dimension(w, h));

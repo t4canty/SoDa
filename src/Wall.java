@@ -1,8 +1,7 @@
 import java.awt.*;
 import java.util.ArrayList;
 
-public class Wall extends GameObject
-{
+public class Wall extends GameObject {
 
     private double height;
     private double width;

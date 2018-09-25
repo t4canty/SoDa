@@ -25,61 +25,42 @@ public class Car extends GameObject {
 
     }
 
-    public boolean aboveMaxVel()
-    {
-        if (Math.sqrt(Math.pow(velX, 2) + Math.pow(velY, 2)) > maxVel * 2)
-            return true;
-        else
-            return false;
+    public boolean aboveMaxVel() {
+        return Math.sqrt(Math.pow(velX, 2) + Math.pow(velY, 2)) > maxVel * 2;
     }
 
     @Override
     public void tick(ArrayList<GameObject> objects) {
-        if (leftPressed)
-        {
+        if (leftPressed) {
             if (velX >= -maxVel && !aboveMaxVel())
                 velX -= accel;
-            x += velX;
         }
-        if (rightPressed)
-        {
+        if (rightPressed) {
             if (velX <= maxVel && !aboveMaxVel())
                 velX += accel;
-            x += velX;
         }
-        if (upPressed)
-        {
+        if (upPressed) {
             if (velY >= -maxVel && !aboveMaxVel())
                 velY -= accel;
-            y += velY;
         }
-        if (downPressed)
-        {
+        if (downPressed) {
             if (velY <= maxVel && !aboveMaxVel())
                 velY += accel;
-            y += velY;
         }
-        if (velX > 0 && !rightPressed)
-        {
+        if (velX > 0 && !rightPressed) {
             velX -= accel;
-            x += velX;
         }
-        else if (velX < 0 && !leftPressed)
-        {
+        else if (velX < 0 && !leftPressed) {
             velX += accel;
-            x += velX;
         }
-        if (velY > 0 && !downPressed)
-        {
+        if (velY > 0 && !downPressed) {
             velY -= accel;
-            y += velY;
         }
-        else if (velY < 0 && !upPressed)
-        {
+        else if (velY < 0 && !upPressed) {
             velY += accel;
-            y += velY;
         }
-
+        x += velX;
+        y += velY;
     }
 
     @Override
