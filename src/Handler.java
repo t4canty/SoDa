@@ -37,5 +37,11 @@ public class Handler {
         objects.remove(object);
     }
 
+    public void setupWorld()
+    {
+        this.addObject(new Car(250,20, ObjectID.Car1));
+        this.addObject(new Wall(100, 100, 20, 50, ObjectID.Wall));
+    }
+
 }
 

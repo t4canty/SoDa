@@ -39,47 +39,68 @@ public class Car extends GameObject {
         {
             if (velX >= -maxVel && !aboveMaxVel())
                 velX -= accel;
-            x += velX;
+
         }
         if (rightPressed)
         {
             if (velX <= maxVel && !aboveMaxVel())
                 velX += accel;
-            x += velX;
+
         }
         if (upPressed)
         {
             if (velY >= -maxVel && !aboveMaxVel())
                 velY -= accel;
-            y += velY;
+
         }
         if (downPressed)
         {
             if (velY <= maxVel && !aboveMaxVel())
                 velY += accel;
-            y += velY;
+
         }
         if (velX > 0 && !rightPressed)
         {
             velX -= accel;
-            x += velX;
+
         }
         else if (velX < 0 && !leftPressed)
         {
             velX += accel;
-            x += velX;
+
         }
         if (velY > 0 && !downPressed)
         {
             velY -= accel;
-            y += velY;
+
         }
         else if (velY < 0 && !upPressed)
         {
             velY += accel;
-            y += velY;
-        }
 
+        }
+        x += velX;
+        y += velY;
+        checkCollisions(objects);
+
+    }
+
+    private void checkCollisions(ArrayList<GameObject> objects)
+    {
+        for (int i =0; i < objects.size(); i++)
+        {
+            GameObject cur = objects.get(i);
+            if (cur.getID().equals(ObjectID.Wall))
+            {
+                //System.out.println("Found wall");
+                if (this.getBounds().intersects(cur.getBounds()))
+                {
+                    //System.out.println("Collided");
+                    this.setX((float)cur.getBounds().getX() + 20);
+                    this.setY((float)cur.getBounds().getY());
+                }
+            }
+        }
     }
 
     @Override
