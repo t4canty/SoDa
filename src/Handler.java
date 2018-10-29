@@ -39,8 +39,11 @@ public class Handler {
 
     public void setupWorld()
     {
-        this.addObject(new Car(250,20, ObjectID.Car1));
-        this.addObject(new Wall(100, 100, 20, 50, ObjectID.Wall));
+        //this.addObject(new Car(250,20, ObjectID.Car1));
+        this.addObject(new Car(20, 20, ObjectID.Car1));
+        for (int i = 0; i < 10; i++) {
+            this.addObject(new Wall(200 + (16 * i), 200, ObjectID.Wall));
+        }
     }
 
 }
