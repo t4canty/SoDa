@@ -2,8 +2,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
-public class Wall extends GameObject
-{
+public class Wall extends GameObject {
 
 
     public Wall(float x, float y, ObjectID id) {

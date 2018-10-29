@@ -22,15 +22,12 @@ public class Car extends GameObject {
         // TODO Auto-generated constructor stub
     }
 
-    public boolean aboveMaxVel()
-    {
-        if (Math.sqrt(Math.pow(velX, 2) + Math.pow(velY, 2)) > maxVel * 2)
-            return true;
-        else
-            return false;
+    public boolean aboveMaxVel() {
+        return Math.sqrt(Math.pow(velX, 2) + Math.pow(velY, 2)) > maxVel * 2;
     }
 
     @Override
+
     public void tick(ArrayList<GameObject> objects)
     {
         if (leftPressed)
@@ -38,42 +35,31 @@ public class Car extends GameObject {
             if (velX >= -maxVel && !aboveMaxVel())
                 velX -= accel;
 
+
         }
-        if (rightPressed)
-        {
+        if (rightPressed) {
             if (velX <= maxVel && !aboveMaxVel())
                 velX += accel;
-
-        }
-        if (upPressed)
-        {
+}
+        if (upPressed) {
             if (velY >= -maxVel && !aboveMaxVel())
                 velY -= accel;
-
         }
-        if (downPressed)
-        {
+        if (downPressed) {
             if (velY <= maxVel && !aboveMaxVel())
                 velY += accel;
-
         }
-        if (velX > 0 && !rightPressed)
-        {
+        if (velX > 0 && !rightPressed) {
             velX -= accel;
 
         }
-        else if (velX < 0 && !leftPressed)
-        {
+        else if (velX < 0 && !leftPressed) {
             velX += accel;
-
         }
-        if (velY > 0 && !downPressed)
-        {
+        if (velY > 0 && !downPressed) {
             velY -= accel;
-
         }
-        else if (velY < 0 && !upPressed)
-        {
+        else if (velY < 0 && !upPressed) {
             velY += accel;
 
         }
@@ -115,6 +101,7 @@ public class Car extends GameObject {
                 }
             }
         }
+
     }
 
     @Override
